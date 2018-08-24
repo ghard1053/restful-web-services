@@ -1,5 +1,6 @@
 package com.pad.rest.webservices.restfulwebservices;
 
+import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import java.util.Locale;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -17,15 +18,15 @@ public class RestfulWebServicesApplication {
 
 	@Bean
 	public LocaleResolver localeResolver() {
-		SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+		AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();
 		localeResolver.setDefaultLocale(Locale.US);
 		return localeResolver;
 	}
 
-	@Bean
-	public ResourceBundleMessageSource bundleMessageSource() {
-		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-		messageSource.setBasename("messages");
-		return messageSource;
-	}
+	// @Bean
+	// public ResourceBundleMessageSource messageSource() {
+	// 	ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+	// 	messageSource.setBasename("messages");
+	// 	return messageSource;
+	// }
 }
