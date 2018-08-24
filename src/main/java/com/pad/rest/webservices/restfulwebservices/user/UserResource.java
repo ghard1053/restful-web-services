@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.hateoas.Resource;
 
@@ -38,12 +38,16 @@ public class UserResource {
 		if (user == null)
 			throw new UserNotFoundException("id-" + id);
 
+		//"all-users", SERVER_PATH + "/users"
+		//retrieveAllUsers
 		Resource<User> resource = new Resource<User>(user);
 
 		ControllerLinkBuilder linkTo =
 			linkTo(methodOn(this.getClass()).retrieveAllUsers());
 
 		resource.add(linkTo.withRel("all-users"));
+
+		//HATEOAS
 
 		return resource;
 	}
